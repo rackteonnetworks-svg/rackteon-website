@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rackteon Networks – Where Learning Meets Hiring</title>
+<link rel="icon" type="image/png" href="Screenshot 2026-04-06 at 20.54.45.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --teal: #00F5C4;
+  --cyan: #00C4FF;
+  --dark: #111314;
+  --dark2: #1a1d1f;
+  --dark3: #242729;
+  --card: #1e2124;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0f2f4;
+  --muted: #8a9099;
+  --grad: linear-gradient(135deg, #00F5C4, #00C4FF);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4,h5 { font-family: 'Manrope', sans-serif; line-height: 1.2; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── NAV & PURE CSS LOGO ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  height: 75px;
+  background: rgba(17,19,20,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: all .3s;
+}
+
+/* Hard-coded Native Logo Styling */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+.brand-title {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--text); 
+  line-height: 1;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: baseline;
+  transition: all 0.3s ease;
+}
+.brand-dot {
+  color: var(--teal);
+  font-size: 1.8rem; 
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+.brand-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.68rem;
+  color: var(--teal);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  margin-left: 4px; 
+  transition: all 0.3s ease;
+}
+
+.nav-links { display: flex; align-items: center; gap: 8px; list-style: none; }
+.nav-links a { padding: 8px 14px; border-radius: 8px; font-size: .9rem; font-weight: 500; color: var(--muted); transition: all .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,0.07); }
+.nav-cta { background: var(--grad) !important; color: #000 !important; font-weight: 700 !important; padding: 9px 20px !important; border-radius: 8px !important; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+
+.mobile-menu {
+  display: none; position: fixed; top: 75px; left: 0; right: 0; z-index: 999;
+  background: var(--dark2); border-bottom: 1px solid var(--border); padding: 16px 5% 24px; flex-direction: column; gap: 4px;
+}
+.mobile-menu a { display: block; padding: 12px 16px; border-radius: 8px; font-size: 1rem; color: var(--muted); transition: all .2s; }
+.mobile-menu a:hover { color: var(--text); background: rgba(255,255,255,0.07); }
+.mobile-menu.open { display: flex; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px; border-radius: 10px;
+  font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .95rem;
+  cursor: pointer; border: none; transition: all .25s; text-align: center;
+}
+.btn-primary { background: var(--grad); color: #000; }
+.btn-primary:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,245,196,.25); }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+/* ── SECTIONS ── */
+section { padding: 100px 5%; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-label { display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+.section-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 20px; }
+.section-sub { font-size: 1.05rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
+
+/* ── HERO ── */
+#hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 140px; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0,245,196,0.07) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 20% 70%, rgba(0,196,255,0.05) 0%, transparent 50%); }
+.hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); }
+.hero-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 100px; background: rgba(0,245,196,0.1); border: 1px solid rgba(0,245,196,0.25); font-size: .82rem; font-weight: 500; color: var(--teal); margin-bottom: 24px; animation: fadeUp .7s ease both; }
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+.hero-title { font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; animation: fadeUp .7s .1s ease both; }
+.hero-title .grad-text { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-desc { font-size: 1.1rem; color: var(--muted); line-height: 1.75; margin-bottom: 36px; animation: fadeUp .7s .2s ease both; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; animation: fadeUp .7s .3s ease both; }
+.hero-stats { display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap; animation: fadeUp .7s .4s ease both; }
+.hero-stat .num { font-family: 'Manrope', sans-serif; font-size: 2rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-stat .lbl { font-size: .82rem; color: var(--muted); margin-top: 2px; }
+
+.hero-visual { position: relative; animation: fadeUp .7s .2s ease both; }
+.hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; position: relative; overflow: hidden; }
+.hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
+.hero-card-title { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; }
+.topics-preview { display: flex; flex-wrap: wrap; gap: 8px; }
+.topic-chip { padding: 5px 12px; border-radius: 100px; font-size: .78rem; font-weight: 500; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--muted); transition: all .2s; }
+.topic-chip.hl { background: rgba(0,245,196,0.1); border-color: rgba(0,245,196,0.3); color: var(--teal); }
+
+.price-badge { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-radius: 12px; background: rgba(0,245,196,0.08); border: 1px solid rgba(0,245,196,0.2); }
+.price-badge .price { font-family: 'Manrope', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--teal); }
+.price-badge .original { font-size: .85rem; color: var(--muted); text-decoration: line-through; }
+.price-badge .label { font-size: .78rem; color: var(--muted); }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.hero-visual { animation: floatY 5s ease-in-out infinite; }
+
+/* ── TICKER ── */
+.ticker-wrap { overflow: hidden; background: rgba(0,245,196,0.05); border-top: 1px solid rgba(0,245,196,0.15); border-bottom: 1px solid rgba(0,245,196,0.15); padding: 14px 0; }
+.ticker { display: flex; gap: 60px; animation: ticker 25s linear infinite; width: max-content; }
+.ticker-item { display: flex; align-items: center; gap: 10px; font-size: .85rem; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.ticker-item .dot { color: var(--teal); font-size: 1.2rem; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ── ABOUT ── */
+#about { background: var(--dark2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-visual { position: relative; }
+.about-card-main { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; }
+.about-card-main::after { content: ''; position: absolute; bottom: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0,245,196,0.12) 0%, transparent 70%); }
+.about-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 100px; background: rgba(0,245,196,0.1); border: 1px solid rgba(0,245,196,0.2); font-size: .82rem; color: var(--teal); margin-bottom: 14px; }
+.about-big-num { font-family: 'Manrope', sans-serif; font-size: 3.5rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+.about-mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+.mini-card { background: var(--dark3); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.mini-card .m-num { font-family: 'Manrope', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--teal); }
+.mini-card .m-lbl { font-size: .78rem; color: var(--muted); margin-top: 2px; }
+.about-content .section-sub { max-width: none; }
+.about-features { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+.feature-row { display: flex; align-items: flex-start; gap: 14px; }
+.feature-icon { width: 40px; height: 40px; min-width: 40px; border-radius: 10px; background: rgba(0,245,196,0.1); border: 1px solid rgba(0,245,196,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.feature-title { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .95rem; margin-bottom: 3px; }
+.feature-desc { font-size: .87rem; color: var(--muted); }
+
+/* ── COURSE ── */
+#course { padding-bottom: 0; }
+.course-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; margin-bottom: 60px; }
+.topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; margin-bottom: 60px; }
+.topic-cell { background: var(--card); padding: 24px; display: flex; align-items: flex-start; gap: 14px; transition: all .25s; }
+.topic-cell:hover { background: var(--dark3); }
+.topic-num { font-family: 'Manrope', sans-serif; font-size: .72rem; font-weight: 700; color: var(--teal); opacity: .7; min-width: 24px; padding-top: 2px; }
+.topic-name { font-size: .92rem; font-weight: 500; line-height: 1.4; }
+
+/* ── SYLLABUS CTA ── */
+.syllabus-cta { background: linear-gradient(135deg, rgba(0,245,196,0.08) 0%, rgba(0,196,255,0.05) 100%); border: 1px solid rgba(0,245,196,0.15); border-radius: 24px; padding: 60px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin: 0 5% 80px; }
+.syllabus-cta h3 { font-size: 2rem; margin-bottom: 12px; }
+.syllabus-cta p { color: var(--muted); max-width: 480px; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: var(--dark2); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.testi-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: all .3s; position: relative; display: flex; flex-direction: column; justify-content: space-between; }
+.testi-card:hover { border-color: rgba(0,245,196,0.3); transform: translateY(-4px); }
+.testi-card::before { content: '"'; position: absolute; top: 16px; right: 24px; font-size: 5rem; font-family: 'Manrope', sans-serif; font-weight: 800; color: rgba(0,245,196,0.1); line-height: 1; }
+.testi-text { font-size: .93rem; color: var(--muted); line-height: 1.75; margin-bottom: 24px; position: relative; z-index: 2; }
+.testi-author { display: flex; align-items: center; gap: 14px; }
+.testi-avatar { width: 50px; height: 50px; border-radius: 50%; overflow: hidden; background: var(--grad); display: flex; align-items: center; justify-content: center; flex-shrink: 0;}
+.testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.testi-name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .93rem; line-height: 1.2;}
+.testi-role { font-size: .8rem; color: var(--teal); }
+.placed-badge { margin-top: 16px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; background: rgba(0,245,196,0.1); border: 1px solid rgba(0,245,196,0.2); font-size: .75rem; font-weight: 600; color: var(--teal); width: fit-content;}
+
+/* ── COMMUNITY ── */
+.community-section { padding: 80px 5%; text-align: center; }
+.wa-card { max-width: 640px; margin: 0 auto; background: linear-gradient(135deg, #075E54 0%, #128C7E 100%); border-radius: 24px; padding: 48px; position: relative; overflow: hidden; }
+.wa-card::before { content: ''; position: absolute; top: -40px; right: -40px; width: 160px; height: 160px; background: rgba(255,255,255,0.07); border-radius: 50%; }
+.wa-icon { font-size: 3rem; margin-bottom: 16px; }
+.wa-card h3 { font-size: 1.8rem; margin-bottom: 12px; color: #fff; }
+.wa-card p { color: rgba(255,255,255,0.75); margin-bottom: 28px; }
+
+/* Responsive WA Button Styling */
+.wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 32px; border-radius: 12px; background: #fff; color: #075E54; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .95rem; transition: all .25s; text-decoration: none; }
+.wa-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.3); }
+
+/* ── LEAD FORM ── */
+#register { background: var(--dark2); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.form-info h2 { font-size: 2.5rem; margin-bottom: 16px; }
+.form-info p { color: var(--muted); line-height: 1.75; }
+.form-perks { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+.perk-row { display: flex; align-items: center; gap: 12px; font-size: .92rem; }
+.perk-row .check { width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: rgba(0,245,196,0.15); border: 1px solid rgba(0,245,196,0.3); display: flex; align-items: center; justify-content: center; font-size: .7rem; color: var(--teal); }
+
+.lead-form { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; position: relative; overflow: hidden; }
+.lead-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); }
+.form-title { font-size: 1.4rem; margin-bottom: 8px; }
+.form-subtitle { font-size: .87rem; color: var(--muted); margin-bottom: 28px; }
+.form-group { margin-bottom: 18px; text-align: left; }
+.form-group label { display: block; font-size: .83rem; font-weight: 600; margin-bottom: 7px; color: var(--muted); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 16px; background: var(--dark3); border: 1px solid var(--border); border-radius: 10px; color: var(--text); font-family: 'Inter', sans-serif; font-size: .93rem; transition: border-color .2s; outline: none; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,245,196,0.1); }
+.form-group select { appearance: none; cursor: pointer; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-submit { width: 100%; padding: 14px; border-radius: 10px; background: var(--grad); color: #000; font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: all .25s; margin-top: 8px; }
+.form-submit:hover { opacity: .9; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,245,196,.25); }
+
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success .success-icon { font-size: 3rem; margin-bottom: 16px; }
+.form-success h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.form-success p { color: var(--muted); }
+
+/* ── BLOG ── */
+#blog-page { padding-top: 120px; }
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; margin-top: 48px; }
+.blog-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all .3s; cursor: pointer; }
+.blog-card:hover { border-color: rgba(0,245,196,0.3); transform: translateY(-4px); }
+.blog-thumb { height: 180px; background: var(--dark3); display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
+.blog-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,245,196,0.08) 0%, rgba(0,196,255,0.08) 100%); }
+.blog-body { padding: 24px; }
+.blog-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.blog-tag { padding: 3px 10px; border-radius: 100px; font-size: .73rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; background: rgba(0,245,196,0.1); border: 1px solid rgba(0,245,196,0.2); color: var(--teal); }
+.blog-title { font-family: 'Manrope', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+.blog-excerpt { font-size: .87rem; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.blog-meta { display: flex; align-items: center; justify-content: space-between; font-size: .8rem; color: var(--muted); }
+.blog-read { color: var(--teal); font-weight: 600; font-size: .83rem; }
+
+/* ── FOOTER ── */
+footer { background: var(--dark2); border-top: 1px solid var(--border); padding: 60px 5% 30px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; max-width: 280px; margin-bottom: 24px; margin-top: 16px; }
+
+.social-links { display: flex; gap: 12px; }
+.social-link { width: 40px; height: 40px; border-radius: 10px; background: var(--dark3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all .2s; color: var(--text); text-decoration: none;}
+.social-link:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+.footer-col h4 { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .92rem; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a { font-size: .87rem; color: var(--muted); transition: color .2s; }
+.footer-col ul li a:hover { color: var(--teal); }
+.footer-contact { display: flex; flex-direction: column; gap: 10px; }
+.contact-row { display: flex; align-items: center; gap: 10px; font-size: .87rem; color: var(--muted); }
+.contact-row .ico { color: var(--teal); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: .83rem; color: var(--muted); }
+
+/* Responsive Footer WA Button */
+.footer-wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; padding: 12px 18px; font-size: .9rem; width: 100%; max-width: 200px; text-decoration: none;}
+
+/* ── MODAL ── */
+.modal-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 40px; width: 100%; max-width: 480px; position: relative; transform: translateY(30px); transition: transform .3s; }
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); border-radius: 24px 24px 0 0; }
+.modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 8px; background: var(--dark3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--muted); font-size: 1rem; transition: all .2s; }
+.modal-close:hover { color: var(--text); border-color: var(--teal); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-visual { display: none; }
+  .testi-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .syllabus-cta { grid-template-columns: 1fr; text-align: center; }
+  .syllabus-cta p { max-width: none; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 70px 5%; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .hero-stats { gap: 20px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .syllabus-cta { padding: 40px 28px; }
+  .about-mini-cards { grid-template-columns: 1fr 1fr; }
+  .footer-wa-btn { max-width: 100%; }
+  
+  /* Mobile Fix for WhatsApp Card & Button */
+  .wa-card { padding: 30px 20px; }
+  .wa-btn {
+    width: 100%;
+    padding: 14px 10px;
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+  
+  /* Mobile Fix for the Logo */
+  .brand-logo { gap: 6px; }
+  .brand-icon { width: 30px; height: 30px; }
+  .brand-title { font-size: 1.3rem; letter-spacing: 0.5px; }
+  .brand-dot { font-size: 1.3rem; }
+  .brand-subtitle { font-size: 0.55rem; letter-spacing: 3px; margin-top: 2px; }
+}
+
+/* ── MISC ── */
+.tag-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border-radius: 100px; font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,245,196,0.1); border: 1px solid rgba(0,245,196,0.2); color: var(--teal); }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="#" class="brand-logo" onclick="showPage('home')">
+    <svg class="brand-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g transform="skewX(-15) translate(8, 2)">
+        <rect x="0" y="0" width="16" height="14" rx="2" fill="#00F5C4"/>
+        <rect x="18" y="4" width="10" height="10" rx="2" fill="#00E0B0"/>
+        <rect x="-4" y="16" width="10" height="10" rx="2" fill="#00C4FF"/>
+        <rect x="8" y="16" width="16" height="14" rx="2" fill="#00C4FF"/>
+      </g>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-title">RACKTEON<span class="brand-dot">.</span></div>
+      <div class="brand-subtitle">NETWORKS</div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('about')">About</a></li>
+    <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('course').scrollIntoView({behavior:'smooth'}),100)">Course</a></li>
+    <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+    <li><a href="#" onclick="showPage('home'); setTimeout(()=>document.getElementById('register').scrollIntoView({behavior:'smooth'}),100)">Contact</a></li>
+    <li><a href="#" class="nav-cta" onclick="openModal()">Get Syllabus</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home');closeMenu()">Home</a>
+  <a href="#" onclick="showPage('about');closeMenu()">About</a>
+  <a href="#" onclick="showPage('home');closeMenu();setTimeout(()=>document.getElementById('course').scrollIntoView({behavior:'smooth'}),150)">Course</a>
+  <a href="#" onclick="showPage('blog');closeMenu()">Blog</a>
+  <a href="#" onclick="showPage('home');closeMenu();setTimeout(()=>document.getElementById('register').scrollIntoView({behavior:'smooth'}),150)">Contact</a>
+  <a href="#" onclick="openModal();closeMenu()" style="color:var(--teal);font-weight:700;">Get Syllabus →</a>
+</div>
+
+<div id="page-home" class="page active">
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Registration Now Open · Batch Starting Soon
+        </div>
+        <h1 class="hero-title">
+          Where <span class="grad-text">Learning</span><br>
+          Meets Hiring
+        </h1>
+        <p class="hero-desc">
+          Master computer networking from fundamentals to advanced — at a price built for every student. Real skills, real placements, real future.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showPage('home');setTimeout(()=>document.getElementById('register').scrollIntoView({behavior:'smooth'}),100)">
+            Enroll Now &rarr;
+          </button>
+          <button class="btn btn-outline" onclick="openModal()">
+            📄 Download Syllabus
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">₹6,800</div><div class="lbl">Full Course Fee</div></div>
+          <div class="hero-stat"><div class="num">100%</div><div class="lbl">Job-Ready Training</div></div>
+          <div class="hero-stat"><div class="num">25+</div><div class="lbl">Core Topics</div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div style="position:relative;">
+          <div class="hero-card">
+            <div class="hero-card-title">📡 What You'll Learn</div>
+            <div class="topics-preview">
+              <span class="topic-chip hl">OSI Model</span>
+              <span class="topic-chip hl">TCP/IP</span>
+              <span class="topic-chip">Subnetting</span>
+              <span class="topic-chip hl">DNS & DHCP</span>
+              <span class="topic-chip">Routing</span>
+              <span class="topic-chip">Switching</span>
+              <span class="topic-chip hl">Firewalls</span>
+              <span class="topic-chip">VPNs & IPSec</span>
+              <span class="topic-chip">SSL</span>
+              <span class="topic-chip hl">Wireshark</span>
+              <span class="topic-chip">NAT</span>
+              <span class="topic-chip">Cyber Security</span>
+              <span class="topic-chip hl">Mock Interviews</span>
+            </div>
+            <div class="price-badge">
+              <div>
+                <div class="price">₹6,800</div>
+                <div class="label">Certificate Included</div>
+              </div>
+              <div style="text-align:right;">
+                <div class="original">₹15,000</div>
+                <div style="font-size:.75rem;color:var(--teal);font-weight:700;">55% OFF</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker-wrap">
+    <div class="ticker" id="ticker">
+      <span class="ticker-item"><span class="dot">●</span> OSI Model</span>
+      <span class="ticker-item"><span class="dot">●</span> IP Addressing & Subnetting</span>
+      <span class="ticker-item"><span class="dot">●</span> TCP/UDP</span>
+      <span class="ticker-item"><span class="dot">●</span> DNS & DHCP</span>
+      <span class="ticker-item"><span class="dot">●</span> Routing (OSPF, BGP)</span>
+      <span class="ticker-item"><span class="dot">●</span> VLANs & Switching</span>
+      <span class="ticker-item"><span class="dot">●</span> Firewalls</span>
+      <span class="ticker-item"><span class="dot">●</span> SSL & VPNs</span>
+      <span class="ticker-item"><span class="dot">●</span> Cyber Security</span>
+      <span class="ticker-item"><span class="dot">●</span> Wireshark</span>
+      <span class="ticker-item"><span class="dot">●</span> Mock Interviews</span>
+      <span class="ticker-item"><span class="dot">●</span> CCNA Prep</span>
+      <span class="ticker-item"><span class="dot">●</span> OSI Model</span>
+      <span class="ticker-item"><span class="dot">●</span> IP Addressing & Subnetting</span>
+      <span class="ticker-item"><span class="dot">●</span> TCP/UDP</span>
+      <span class="ticker-item"><span class="dot">●</span> DNS & DHCP</span>
+      <span class="ticker-item"><span class="dot">●</span> Routing (OSPF, BGP)</span>
+      <span class="ticker-item"><span class="dot">●</span> VLANs & Switching</span>
+      <span class="ticker-item"><span class="dot">●</span> Firewalls</span>
+      <span class="ticker-item"><span class="dot">●</span> SSL & VPNs</span>
+      <span class="ticker-item"><span class="dot">●</span> Cyber Security</span>
+      <span class="ticker-item"><span class="dot">●</span> Wireshark</span>
+      <span class="ticker-item"><span class="dot">●</span> Mock Interviews</span>
+      <span class="ticker-item"><span class="dot">●</span> CCNA Prep</span>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-card-main">
+            <div class="about-pill">🌏 World's Most Affordable Networking Bootcamp</div>
+            <div class="about-big-num">₹6,800</div>
+            <p style="color:var(--muted);font-size:.9rem;margin-top:8px;">Complete course — less than most CCNA preps</p>
+            <div class="about-mini-cards">
+              <div class="mini-card">
+                <div class="m-num">3+</div>
+                <div class="m-lbl">Students Placed</div>
+              </div>
+              <div class="mini-card">
+                <div class="m-num">25+</div>
+                <div class="m-lbl">Topics Covered</div>
+              </div>
+              <div class="mini-card">
+                <div class="m-num">Free</div>
+                <div class="m-lbl">Mock Interviews</div>
+              </div>
+              <div class="mini-card">
+                <div class="m-num">Good Net</div>
+                <div class="m-lbl">Connection Req.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">World-Class Networking Training, Built for Everyone</h2>
+          <p class="section-sub">
+            We are a team of experienced IT engineers on a mission to make quality networking education accessible to every student — regardless of where they come from or what they can afford. Rackteon Networks delivers job-ready skills at a price that works for everyone.
+          </p>
+          <div class="about-features">
+            <div class="feature-row">
+              <div class="feature-icon">🎯</div>
+              <div>
+                <div class="feature-title">Job-Oriented Curriculum</div>
+                <div class="feature-desc">Every topic is chosen because employers ask for it — from OSI to firewalls to mock interviews.</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">💸</div>
+              <div>
+                <div class="feature-title">Affordable for Everyone</div>
+                <div class="feature-desc">At ₹6,800, our complete bootcamp costs less than a typical CCNA course, with no compromise on quality.</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-icon">🔬</div>
+              <div>
+                <div class="feature-title">Hands-On Labs & Projects</div>
+                <div class="feature-desc">Learn by doing — Wireshark, real-world simulations, and practical troubleshooting scenarios.</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="showPage('about')">Our Story &rarr;</button>
+            <button class="btn btn-outline" onclick="openModal()">Download Syllabus</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="course">
+    <div class="container">
+      <div class="course-header">
+        <div>
+          <div class="section-label">Full Curriculum</div>
+          <h2 class="section-title">Everything You'll Master</h2>
+        </div>
+        <p style="color:var(--muted);max-width:380px;font-size:.92rem;line-height:1.7;">From the very first packet to full network architecture — here's exactly what the bootcamp covers.</p>
+      </div>
+
+      <div class="topics-grid reveal">
+        <div class="topic-cell"><span class="topic-num">01</span><span class="topic-name">OSI Model & Layer Functionalities (Top-Down & Bottom-Up Flow)</span></div>
+        <div class="topic-cell"><span class="topic-num">02</span><span class="topic-name">Network Segmentation (LAN, WAN, PAN, MAN)</span></div>
+        <div class="topic-cell"><span class="topic-num">03</span><span class="topic-name">Network Scopes — Intranet, Internet, Extranet, VPN</span></div>
+        <div class="topic-cell"><span class="topic-num">04</span><span class="topic-name">Network Topologies, Devices & Terminologies</span></div>
+        <div class="topic-cell"><span class="topic-num">05</span><span class="topic-name">IPv4 Addressing, IPv4 vs IPv6 & Subnetting</span></div>
+        <div class="topic-cell"><span class="topic-num">06</span><span class="topic-name">IP Header Deep Dive</span></div>
+        <div class="topic-cell"><span class="topic-num">07</span><span class="topic-name">Segmentation, Fragmentation, MTU & MSS</span></div>
+        <div class="topic-cell"><span class="topic-num">08</span><span class="topic-name">TCP Header, Handshake, Termination & TCP vs UDP</span></div>
+        <div class="topic-cell"><span class="topic-num">09</span><span class="topic-name">DNS — Iterative vs Recursive, Records, Zone Transfers</span></div>
+        <div class="topic-cell"><span class="topic-num">10</span><span class="topic-name">DHCP, DORA Process & Relay Agent</span></div>
+        <div class="topic-cell"><span class="topic-num">11</span><span class="topic-name">Routing — OSPF and BGP</span></div>
+        <div class="topic-cell"><span class="topic-num">12</span><span class="topic-name">Switching — VLAN, Access/Trunk Ports, STP, VTP, EtherChannel</span></div>
+        <div class="topic-cell"><span class="topic-num">13</span><span class="topic-name">ARP — Proxy ARP, GARP, MAC & ARP Tables</span></div>
+        <div class="topic-cell"><span class="topic-num">14</span><span class="topic-name">NAT & Its Types</span></div>
+        <div class="topic-cell"><span class="topic-num">15</span><span class="topic-name">ICMP, SMTP & FTP</span></div>
+        <div class="topic-cell"><span class="topic-num">16</span><span class="topic-name">HTTP & Caching</span></div>
+        <div class="topic-cell"><span class="topic-num">17</span><span class="topic-name">SSL & Digital Certificates</span></div>
+        <div class="topic-cell"><span class="topic-num">18</span><span class="topic-name">VPNs & IPSec</span></div>
+        <div class="topic-cell"><span class="topic-num">19</span><span class="topic-name">Firewall Basics</span></div>
+        <div class="topic-cell"><span class="topic-num">20</span><span class="topic-name">Cyber Security Basics — DDoS, DoS, SYN Flood, Attacks</span></div>
+        <div class="topic-cell"><span class="topic-num">21</span><span class="topic-name">CSMA/CD & Bandwidth Concepts</span></div>
+        <div class="topic-cell"><span class="topic-num">22</span><span class="topic-name">Protocols on Each OSI Layer</span></div>
+        <div class="topic-cell"><span class="topic-num">23</span><span class="topic-name">Troubleshooting with Wireshark</span></div>
+        <div class="topic-cell"><span class="topic-num">24</span><span class="topic-name">Real-World Troubleshooting Scenarios</span></div>
+        <div class="topic-cell"><span class="topic-num">25</span><span class="topic-name">Free Mock Interviews + Course Completion Certificate</span></div>
+      </div>
+    </div>
+
+    <div class="syllabus-cta reveal">
+      <div>
+        <h3>Want the Full Detailed Syllabus?</h3>
+        <p>Register your details and we'll send you the complete week-by-week syllabus PDF, plus reach out to help you get started.</p>
+      </div>
+      <button class="btn btn-primary" onclick="openModal()" style="white-space:nowrap;">
+        📄 Get Syllabus Now
+      </button>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;">
+        <div class="section-label">Success Stories</div>
+        <h2 class="section-title">Our Students, Placed & Thriving</h2>
+        <p class="section-sub" style="margin:0 auto;">Real people, real companies — here's what Rackteon graduates are saying.</p>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="testi-text">"Rackteon's bootcamp gave me clear, structured knowledge in networking and cybersecurity. The content and mock interviews prepared me so well, I felt confident and ready for real job interviews."</p>
+          <div>
+            <div class="testi-author">
+              <div class="testi-avatar"><img src="image_b7054a.jpg" alt="Umar Mujahid"></div>
+              <div>
+                <div class="testi-name">Umar Mujahid</div>
+                <div class="testi-role">Student</div>
+              </div>
+            </div>
+            <div class="placed-badge">✅ Placed at Almuqeet Systems</div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <p class="testi-text">"Great quality training at an affordable fee! The course covered practical topics in networking and firewalls. It's the best value I found — perfect for students looking for skill-based, job-ready training."</p>
+          <div>
+            <div class="testi-author">
+              <div class="testi-avatar"><img src="image_b7056d.png" alt="Shaheen Nazir"></div>
+              <div>
+                <div class="testi-name">Shaheen Nazir</div>
+                <div class="testi-role">Student</div>
+              </div>
+            </div>
+            <div class="placed-badge">✅ Placed at Movate (Palo Alto)</div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal">
+          <p class="testi-text">"Thanks to Rackteon, I cracked a network engineer interview confidently. The course provided real-world skills and strong fundamentals that helped me answer technical questions easily. Highly recommend it!"</p>
+          <div>
+            <div class="testi-author">
+              <div class="testi-avatar"><img src="image_b705c8.jpg" alt="Sonu Kumar Sen"></div>
+              <div>
+                <div class="testi-name">Sonu Kumar Sen</div>
+                <div class="testi-role">Student</div>
+              </div>
+            </div>
+            <div class="placed-badge">✅ Placed at Wipro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="community-section">
+    <div class="wa-card reveal">
+      <div class="wa-icon">💬</div>
+      <h3>Join Our WhatsApp Community</h3>
+      <p>Connect with fellow learners, get updates on new batches, and get your questions answered — all in our free community.</p>
+      <a href="https://chat.whatsapp.com/DAzybbHNMWq7pdWsOKtUwc?mode=r_t" target="_blank" class="wa-btn">
+        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i>
+        Join Community — It's Free
+      </a>
+    </div>
+  </div>
+
+  <section id="register">
+    <div class="container">
+      <div class="form-grid">
+        <div class="form-info">
+          <div class="section-label">Get Started</div>
+          <h2 class="section-title">Ready to Launch Your<br>Network Career?</h2>
+          <p class="section-sub">Fill in the form and our team will reach out within 24 hours to answer your questions and help you get enrolled.</p>
+
+          <div class="form-perks">
+            <div class="perk-row"><span class="check">✓</span> Complete course for just ₹6,800 — no hidden fees</div>
+            <div class="perk-row"><span class="check">✓</span> Free mock interview sessions included</div>
+            <div class="perk-row"><span class="check">✓</span> Course completion certificate provided</div>
+            <div class="perk-row"><span class="check">✓</span> Beginner-friendly — no prior networking knowledge needed</div>
+            <div class="perk-row"><span class="check">✓</span> Good internet + a laptop is all you need</div>
+            <div class="perk-row"><span class="check">✓</span> Preparation for CCNA and networking job roles</div>
+          </div>
+
+          <div style="margin-top:32px;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:16px;">
+            <p style="font-size:.87rem;color:var(--muted);margin-bottom:8px;">📞 Or reach us directly</p>
+            <p style="font-weight:600;">+91 7006953384 &nbsp;|&nbsp; +91 7780953003</p>
+            <p style="color:var(--teal);font-size:.9rem;margin-top:4px;">rackteonnetwork@gmail.com</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="lead-form">
+            <div id="formContent">
+              <div class="form-title">Register Your Interest</div>
+              <div class="form-subtitle">We'll reach out within 24 hours with all details.</div>
+
+              <form name="bootcamp_leads" method="POST" data-netlify="true" id="regForm">
+                <input type="hidden" name="form-name" value="bootcamp_leads" />
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>First Name *</label>
+                    <input type="text" name="first_name" placeholder="Your first name" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name *</label>
+                    <input type="text" name="last_name" placeholder="Your last name" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Email Address *</label>
+                  <input type="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label>Phone Number *</label>
+                  <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+                <div class="form-group">
+                  <label>Your Current Background</label>
+                  <select name="background">
+                    <option value="">Select your background</option>
+                    <option value="Student">Student (School/College)</option>
+                    <option value="Fresh Graduate">Fresh Graduate</option>
+                    <option value="Working Professional">Working Professional</option>
+                    <option value="Career Changer">Career Changer</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>How Did You Hear About Us?</label>
+                  <select name="source">
+                    <option value="">Select source</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="YouTube">YouTube</option>
+                    <option value="Referral">Friend / Referral</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Message (Optional)</label>
+                  <textarea name="message" rows="3" placeholder="Any questions or things you'd like us to know..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Submit Registration →</button>
+              </form>
+            </div>
+
+            <div class="form-success" id="regSuccess">
+              <div class="success-icon">🎉</div>
+              <h3>You're Registered!</h3>
+              <p>Thank you for your interest. Our team will reach out to you within 24 hours with all the details to get you started.</p>
+              <br>
+              <a href="https://chat.whatsapp.com/DAzybbHNMWq7pdWsOKtUwc?mode=r_t" target="_blank" class="btn btn-primary" style="margin:0 auto;display:inline-flex;">
+                Join WhatsApp Community
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><div id="page-about" class="page">
+  <section id="about-page">
+    <div class="container">
+      <div style="max-width:780px;margin-bottom:60px;">
+        <div class="section-label">Our Story</div>
+        <h1 class="section-title" style="font-size:clamp(2.4rem,5vw,4rem);">We Started Rackteon<br>to Make a Difference</h1>
+        <p style="color:var(--muted);font-size:1.05rem;line-height:1.8;margin-top:20px;">
+          At Rackteon Networks, we are a team of experienced IT engineers who started this journey in Kashmir, India — where we saw talented young people struggle to find quality, affordable IT training. We decided to change that. Today, our bootcamp is open to students across India and worldwide, giving anyone with a laptop and an internet connection the skills they need to build a real career in networking.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-bottom:80px;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🎯</div>
+          <h3 style="font-size:1.1rem;margin-bottom:10px;">Our Mission</h3>
+          <p style="font-size:.9rem;color:var(--muted);line-height:1.7;">Provide high-quality, practical, and affordable training so no deserving student is left behind due to financial limitations.</p>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;">
+          <div style="font-size:2rem;margin-bottom:12px;">🌏</div>
+          <h3 style="font-size:1.1rem;margin-bottom:10px;">Our Vision</h3>
+          <p style="font-size:.9rem;color:var(--muted);line-height:1.7;">A future where students across India and around the world are equipped with real-world IT skills, confident, and ready to step into the global job market.</p>
+        </div>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px;">
+          <div style="font-size:2rem;margin-bottom:12px;">💡</div>
+          <h3 style="font-size:1.1rem;margin-bottom:10px;">Our Approach</h3>
+          <p style="font-size:.9rem;color:var(--muted);line-height:1.7;">Expert instruction, hands-on labs, career-focused training, and free mock interviews — all at a price that doesn't break the bank.</p>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:24px;padding:48px;margin-bottom:48px;">
+        <h2 style="font-size:2rem;margin-bottom:24px;">Why Just ₹6,800?</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.8;max-width:720px;">
+          We believe great education should not be a privilege. The IT industry is full of opportunity — from India to the rest of the world — and yet quality training is often priced out of reach for most students. Rackteon Networks was built to fix that. Our complete networking bootcamp is offered at just ₹6,800, which is less than most basic CCNA courses, with zero compromise on content, quality, or career support. Every student who works hard deserves a real shot at a great IT career.
+        </p>
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="showPage('home');setTimeout(()=>document.getElementById('register').scrollIntoView({behavior:'smooth'}),100)">Enroll Now →</button>
+          <button class="btn btn-outline" onclick="openModal()">Get Syllabus</button>
+        </div>
+      </div>
+
+      <div style="background:var(--dark2);border:1px solid var(--border);border-radius:24px;padding:40px;">
+        <h3 style="font-size:1.4rem;margin-bottom:24px;">Required Resources</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;">
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="font-size:1.5rem;">📚</span>
+            <div>
+              <div style="font-weight:700;font-size:.93rem;margin-bottom:4px;">TCP/IP Protocol Suite</div>
+              <div style="font-size:.82rem;color:var(--muted);">McGraw-Hill Forouzan Networking</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="font-size:1.5rem;">🔐</span>
+            <div>
+              <div style="font-weight:700;font-size:.93rem;margin-bottom:4px;">Cryptography & Network Security</div>
+              <div style="font-size:.82rem;color:var(--muted);">McGraw-Hill Forouzan Networking</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="font-size:1.5rem;">💻</span>
+            <div>
+              <div style="font-weight:700;font-size:.93rem;margin-bottom:4px;">Laptop or PC</div>
+              <div style="font-size:.82rem;color:var(--muted);">For online classes and labs</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px;">
+            <span style="font-size:1.5rem;">📶</span>
+            <div>
+              <div style="font-weight:700;font-size:.93rem;margin-bottom:4px;">Good Internet Connection</div>
+              <div style="font-size:.82rem;color:var(--muted);">Stable connection for live classes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-blog" class="page">
+  <section id="blog-page">
+    <div class="container">
+      <div style="margin-bottom:20px;">
+        <div class="section-label">Knowledge Hub</div>
+        <h1 class="section-title">Rackteon Blog</h1>
+        <p class="section-sub">In-depth articles on networking, cybersecurity, and building your IT career — written by our engineers.</p>
+      </div>
+
+      <div class="blog-grid" id="blogContainer">
+        <div class="blog-card">
+          <div class="blog-thumb" style="background:linear-gradient(135deg,#0d2f2f,#1a4040);">🌐</div>
+          <div class="blog-body">
+            <div class="blog-tags"><span class="blog-tag">Networking</span><span class="blog-tag">Beginner</span></div>
+            <div class="blog-title">What is the OSI Model? A Complete Beginner's Guide</div>
+            <div class="blog-excerpt">The OSI (Open Systems Interconnection) model is the foundation of all networking. In this article, we break down all 7 layers.</div>
+            <div class="blog-meta">
+              <span>5 min read · Apr 2026</span>
+              <span class="blog-read">Read →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px;padding:40px;background:var(--card);border:1px solid var(--border);border-radius:24px;">
+        <div style="font-size:2rem;margin-bottom:12px;">✍️</div>
+        <h3 style="font-size:1.4rem;margin-bottom:10px;">More Articles Coming Soon</h3>
+        <p style="color:var(--muted);margin-bottom:24px;">Join our WhatsApp community to get notified when we publish new networking guides and tutorials.</p>
+        <a href="https://chat.whatsapp.com/DAzybbHNMWq7pdWsOKtUwc?mode=r_t" target="_blank" class="btn btn-primary">
+          Join Community for Updates
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo" style="margin-bottom: 16px;" onclick="showPage('home')">
+          <svg class="brand-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="skewX(-15) translate(8, 2)">
+              <rect x="0" y="0" width="16" height="14" rx="2" fill="#00F5C4"/>
+              <rect x="18" y="4" width="10" height="10" rx="2" fill="#00E0B0"/>
+              <rect x="-4" y="16" width="10" height="10" rx="2" fill="#00C4FF"/>
+              <rect x="8" y="16" width="16" height="14" rx="2" fill="#00C4FF"/>
+            </g>
+          </svg>
+          <div class="brand-text">
+            <div class="brand-title">RACKTEON<span class="brand-dot">.</span></div>
+            <div class="brand-subtitle">NETWORKS</div>
+          </div>
+        </a>
+        <p class="footer-desc">Where Learning Meets Hiring. Affordable, job-ready networking training for students across India and the world.</p>
+        
+        <div class="social-links">
+          <a href="https://chat.whatsapp.com/DAzybbHNMWq7pdWsOKtUwc?mode=r_t" target="_blank" class="social-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/company/rackteon-networks/?viewAsMember=true" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.youtube.com/@RackteonNetworks" target="_blank" class="social-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/rackteonnetworks/" target="_blank" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#" onclick="showPage('home')">Home</a></li>
+          <li><a href="#" onclick="showPage('about')">About Us</a></li>
+          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('course').scrollIntoView({behavior:'smooth'}),100)">Course</a></li>
+          <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+          <li><a href="#" onclick="showPage('home');setTimeout(()=>document.getElementById('register').scrollIntoView({behavior:'smooth'}),100)">Register</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Course Topics</h4>
+        <ul>
+          <li><a href="#">OSI Model</a></li>
+          <li><a href="#">IP Addressing</a></li>
+          <li><a href="#">Routing & Switching</a></li>
+          <li><a href="#">Firewalls & VPNs</a></li>
+          <li><a href="#">Cyber Security</a></li>
+          <li><a href="#">Wireshark Labs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact">
+          <div class="contact-row"><span class="ico">📞</span> +91 7006953384</div>
+          <div class="contact-row"><span class="ico">📞</span> +91 7780953003</div>
+          <div class="contact-row"><span class="ico">✉️</span> rackteonnetwork@gmail.com</div>
+          
+          <a href="https://chat.whatsapp.com/DAzybbHNMWq7pdWsOKtUwc?mode=r_t" target="_blank" class="btn btn-primary footer-wa-btn">
+            <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i>
+            Join WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Rackteon Networks. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="syllabusModal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalFormContent">
+      <div style="margin-bottom:24px;">
+        <div class="tag-pill" style="margin-bottom:12px;">📄 Free Syllabus</div>
+        <h2 style="font-size:1.5rem;margin-bottom:8px;">Get the Full Syllabus</h2>
+        <p style="font-size:.87rem;color:var(--muted);">Register below and we'll send you the complete syllabus and reach out to help you enroll.</p>
+      </div>
+
+      <form name="syllabus_requests" method="POST" data-netlify="true" id="syllabusForm">
+        <input type="hidden" name="form-name" value="syllabus_requests" />
+        
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Your Background</label>
+          <select name="background">
+            <option value="">Select your background</option>
+            <option value="Student">Student (School/College)</option>
+            <option value="Fresh Graduate">Fresh Graduate</option>
+            <option value="Working Professional">Working Professional</option>
+            <option value="Career Changer">Career Changer</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">Send Me the Syllabus →</button>
+      </form>
+      <p style="font-size:.78rem;color:var(--muted);text-align:center;margin-top:12px;">We respect your privacy. No spam, ever.</p>
+    </div>
+    
+    <div id="modalSuccess" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:3rem;margin-bottom:16px;">🎉</div>
+      <h3 style="font-size:1.3rem;margin-bottom:10px;">You're All Set!</h3>
+      <p style="color:var(--muted);margin-bottom:24px;">Our team will reach out within 24 hours with the full syllabus and enrollment details.</p>
+      <a href="https://chat.whatsapp.com/DAzybbHNMWq7pdWsOKtUwc?mode=r_t" target="_blank" class="btn btn-primary" style="display:inline-flex;margin:0 auto;">
+        Join WhatsApp Community
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PAGE ROUTING ──
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0, 0);
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const navMap = { home: 0, about: 1, blog: 3 };
+  if (navMap[page] !== undefined) {
+    document.querySelectorAll('.nav-links a')[navMap[page]].classList.add('active');
+  }
+  setTimeout(initReveal, 100);
+}
+
+// ── MOBILE MENU ──
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ── MODAL ──
+function openModal() {
+  document.getElementById('syllabusModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('syllabusModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e) { if (e.target === document.getElementById('syllabusModal')) closeModal(); }
+
+// ── NETLIFY AJAX FORM SUBMISSION ──
+const handleSubmit = (e, formId, contentId, successId) => {
+  e.preventDefault();
+  const myForm = e.target;
+  const formData = new FormData(myForm);
+  
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    document.getElementById(contentId).style.display = 'none';
+    document.getElementById(successId).style.display = 'block';
+  })
+  .catch((error) => alert("There was an issue submitting your form. Please try again."));
+};
+
+document.getElementById("regForm").addEventListener("submit", (e) => handleSubmit(e, "regForm", "formContent", "regSuccess"));
+document.getElementById("syllabusForm").addEventListener("submit", (e) => handleSubmit(e, "syllabusForm", "modalFormContent", "modalSuccess"));
+
+// ── SCROLL REVEAL ──
+function initReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => io.observe(r));
+}
+document.addEventListener('DOMContentLoaded', initReveal);
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 20) nav.style.boxShadow = '0 2px 40px rgba(0,0,0,.4)';
+  else nav.style.boxShadow = 'none';
+});
+</script>
+</body>
+</html>
