@@ -7,13 +7,18 @@ public_folder: "/uploads"
 
 collections:
   - name: "blog"
-    label: "Blog Posts"
-    folder: "blogs"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Author", name: "author", widget: "string", default: "Rackteon Team"}
-      - {label: "Tags", name: "tags", widget: "list", default: ["Networking"]}
-      - {label: "Body", name: "body", widget: "markdown"}
+    label: "Blog Manager"
+    files:
+      - label: "All Blog Posts"
+        name: "posts"
+        file: "blogs.json"
+        fields:
+          - label: "Your Blogs"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Excerpt (Short Description)", name: "excerpt", widget: "text"}
+              - {label: "Publish Date", name: "date", widget: "datetime"}
+              - {label: "Tags", name: "tags", widget: "string", hint: "Comma separated (e.g., Networking, CCNA)"}
+              - {label: "Body", name: "body", widget: "markdown"}
