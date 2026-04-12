@@ -1109,14 +1109,16 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then(data => {
       const blogContainer = document.getElementById('blogContainer');
-      // Check if blogs exist in the JSON file
       if (data && data.items && data.items.length > 0) {
-        blogContainer.innerHTML = ''; // Clear the dummy placeholder
+        blogContainer.innerHTML = ''; 
         
-        // Reverse the list so the newest blog shows up first
-        data.items.reverse().forEach(blog => {
+        // Create a copy of the array and reverse it to show newest first
+        const reversedBlogs = [...data.items].reverse();
+        
+        reversedBlogs.forEach((blog, index) => {
+          // Calculate the original ID so the link opens the correct post
+          const originalId = data.items.length - 1 - index;
           
-          // Format the tags
           let tagsHtml = '';
           if (blog.tags) {
             blog.tags.split(',').forEach(tag => {
@@ -1124,11 +1126,9 @@ document.addEventListener("DOMContentLoaded", function() {
             });
           }
           
-          // Format the date (e.g., "Apr 2026")
           const dateObj = new Date(blog.date);
           const dateString = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
           
-          // Build the HTML Card
           const blogCard = `
             <div class="blog-card">
               <div class="blog-thumb" style="background:linear-gradient(135deg,#0d2f2f,#1a4040);">🌐</div>
@@ -1138,7 +1138,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="blog-excerpt">${blog.excerpt || ''}</div>
                 <div class="blog-meta">
                   <span>${dateString}</span>
-                  <span class="blog-read" style="cursor:pointer;" onclick="alert('Full blog reading page coming soon!')">Read &rarr;</span>
+                  <a href="/blog-post.html?id=${originalId}" class="blog-read" style="text-decoration:none;">Read &rarr;</a>
                 </div>
               </div>
             </div>
