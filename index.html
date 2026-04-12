@@ -1099,5 +1099,56 @@ window.addEventListener('scroll', () => {
     });
   }
 </script>
+<script>
+// ── DYNAMIC BLOG FETCHER ──
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('/blogs.json')
+    .then(response => {
+      if (!response.ok) throw new Error("No blogs found yet");
+      return response.json();
+    })
+    .then(data => {
+      const blogContainer = document.getElementById('blogContainer');
+      // Check if blogs exist in the JSON file
+      if (data && data.items && data.items.length > 0) {
+        blogContainer.innerHTML = ''; // Clear the dummy placeholder
+        
+        // Reverse the list so the newest blog shows up first
+        data.items.reverse().forEach(blog => {
+          
+          // Format the tags
+          let tagsHtml = '';
+          if (blog.tags) {
+            blog.tags.split(',').forEach(tag => {
+              tagsHtml += `<span class="blog-tag">${tag.trim()}</span>`;
+            });
+          }
+          
+          // Format the date (e.g., "Apr 2026")
+          const dateObj = new Date(blog.date);
+          const dateString = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+          
+          // Build the HTML Card
+          const blogCard = `
+            <div class="blog-card">
+              <div class="blog-thumb" style="background:linear-gradient(135deg,#0d2f2f,#1a4040);">🌐</div>
+              <div class="blog-body">
+                <div class="blog-tags">${tagsHtml}</div>
+                <div class="blog-title">${blog.title}</div>
+                <div class="blog-excerpt">${blog.excerpt || ''}</div>
+                <div class="blog-meta">
+                  <span>${dateString}</span>
+                  <span class="blog-read" style="cursor:pointer;" onclick="alert('Full blog reading page coming soon!')">Read &rarr;</span>
+                </div>
+              </div>
+            </div>
+          `;
+          blogContainer.innerHTML += blogCard;
+        });
+      }
+    })
+    .catch(err => console.log("Waiting for first blog post to be published."));
+});
+</script>
 </body>
 </html>
